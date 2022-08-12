@@ -3,7 +3,7 @@
 #include <string.h>
 
 // Example of how to use libdogecoin API functions:
-// gcc ./php-wrappers/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./php-wrappers/json-php/libdogecoin-json-php
+// gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./libdogecoin-php/json-php/libdogecoin-json-php
 
 int main(int argc, char *argv[]) {
   dogecoin_ecc_start();
