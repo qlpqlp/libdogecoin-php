@@ -14,7 +14,7 @@
 */
 
     function libdogecoin ($commands){
-      exec('./php-wrappers/json-php/libdogecoin-json-php '.$commands[0].' 2>&1', $output, $retval);
+      exec('./libdogecoin-php/json-php/libdogecoin-json-php '.$commands[0].' 2>&1', $output, $retval);
       return json_decode($output[0]);
     }
 
