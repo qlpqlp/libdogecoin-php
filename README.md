@@ -4,6 +4,11 @@ libdogecoin bindings for PHP
 
 Supports any OS *(libdogecoin is required to be installed)*
 
+#Compile
+```linux
+gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./libdogecoin-php/json-php/libdogecoin-json-php
+```
+
 **Note: This is project and README is a work in progress!**
 
 # Binding progress
