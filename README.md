@@ -2,11 +2,11 @@
 
 libdogecoin bindings for PHP
 
-Supports any OS *(libdogecoin is required to be installed)*
+Supports any OS that supports PHP
 
-#Compile
+#If you want to compile a new one (its compiled alredy)
 ```linux
-gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./libdogecoin-php/json-php/libdogecoin-json-php
+gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./libdogecoin-php/libdogecoin-json-php
 ```
 
 **Note: This is project and README is a work in progress!**
@@ -20,41 +20,27 @@ gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./lib
 ```php
 <?php
 /**
-*   File: Functions used on the Libdogecoin
+*   File: Exemple used on the Libdogecoin
 *   Description: Bind Libdogecoin to PHP using c compiled that prints in JSON format
 *
 *   Available Commands:
-*    generatePrivPubKeypair
-*    generateHDMasterPubKeypair
-*    generateDerivedHDPubkey
-*    verifyPrivPubKeypair
-*    verifyHDMasterPubKeypair
-*    verifyP2pkhAddress
-*    start_transaction
+*    $LibDogecoin->generatePrivPubKeypair();
+*    $LibDogecoin->generateHDMasterPubKeypair();
+*    $LibDogecoin->generateDerivedHDPubkey();
+*    $LibDogecoin->verifyPrivPubKeypair($privateKey,$publicKey);
+*    $LibDogecoin->verifyHDMasterPubKeypair($privateKey,$publicKey);
+*    $LibDogecoin->verifyP2pkhAddress($publicKey);
+*    $LibDogecoin->start_transaction($hash_doge,$external_p2pkh_addr,$doge_amount,$fees,$tx_index,$mypubkey,$myscriptpubkey,$myprivkey);
 */
 
-    function libdogecoin ($commands){
-      exec('./libdogecoin-php/json-php/libdogecoin-json-php '.$commands[0].' 2>&1', $output, $retval);
-      return json_decode($output[0]);
-    }
+    require_once 'libdogecoin-php/libdogecoin-bind.php';
 
-    $commands[] = "generatePrivPubKeypair"; //command
-    //$commands[1] = ""; // hash_doge (tx hash with doge)
-    //$commands[2] = ""; // external_p2pkh_addr
-    //$commands[3] = ""; // numeric doge to send ex: 5.0
-    //$commands[4] = ""; // numeric fees ex: 0.00226
-    //$commands[5] = ""; // numeric tx index
-    //$commands[6] = ""; // mypubkey
-    //$commands[7] = ""; // myscriptpubkey
-    //$commands[8] = ""; // myprivkey
+    // Simple exemple for generatePrivPubKeypair
+    $result = $LibDogecoin->generatePrivPubKeypair();
+    echo "This is my Private Key: " . $result->private;
+    echo "<br>";
+    echo "This is my Public Key: ". $result->public;
 
-    // Simple exemple
-    $result = libdogecoin($commands);
 
-    echo "This is my Private Key: ";
-    echo $result->private;
-
-    echo "This is my Public Key";
-    echo $result->public;
 ?>
 ```
