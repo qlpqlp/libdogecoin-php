@@ -29,11 +29,11 @@
     //$commands[8] = ""; // myprivkey
 
     // Simple exemple
-    echo "This is my Private Key: ";
-    echo libdogecoin($commands)->private;
+    $result = libdogecoin($commands);
 
-    echo "<br>";
+    echo "This is my Private Key: ";
+    echo $result->private;
 
     echo "This is my Public Key";
-    echo libdogecoin($commands)->public;
+    echo $result->public;
 ?>
