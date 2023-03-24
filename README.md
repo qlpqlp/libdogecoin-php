@@ -14,6 +14,7 @@ gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./lib
 # Binding progress
 - [x] Address
 - [x] Transactions
+- [x] Moon
 
 # Usage
 
@@ -24,6 +25,7 @@ gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./lib
 *   Description: Bind Libdogecoin to PHP using c compiled that prints in JSON format
 *
 *   Available Commands:
+*    $LibDogecoin->moon();
 *    $LibDogecoin->generatePrivPubKeypair();
 *    $LibDogecoin->generateHDMasterPubKeypair();
 *    $LibDogecoin->generateDerivedHDPubkey();
@@ -35,12 +37,16 @@ gcc ./libdogecoin-php/libdogecoin-json.c -I./include -L./lib -ldogecoin -o ./lib
 
     require_once 'libdogecoin-php/libdogecoin-bind.php';
 
-    // Simple exemple for generatePrivPubKeypair
+    // Simple exemple for Generate a Dogecoin Address
     $result = $LibDogecoin->generatePrivPubKeypair();
     echo "This is my Private Key: " . $result->private;
     echo "<br>";
     echo "This is my Public Key: ". $result->public;
+    echo "<br>";
 
+    // Simple exemple how to get the Moon
+    $result = $LibDogecoin->moon();
+    echo "This is the Moon: " . $result->moon;
 
 ?>
 ```
