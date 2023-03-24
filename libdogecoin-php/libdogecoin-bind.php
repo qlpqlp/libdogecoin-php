@@ -4,6 +4,7 @@
 *   Description: Bind Libdogecoin to PHP using c compiled that prints in JSON format
 *
 *   Available Commands:
+*    moon
 *    generatePrivPubKeypair
 *    generateHDMasterPubKeypair
 *    generateDerivedHDPubkey
@@ -19,6 +20,12 @@ class LibDogecoin {
     private function command ($commands){
       exec('./libdogecoin-php/libdogecoin-json-php '.implode(" ", $commands).' 2>&1', $output, $retval);
       return json_decode($output[0]);
+    }
+
+    // get moon
+    public function moon(){
+      $commands[] = "moon";  
+      return $this->command($commands);
     }
 
     // keypair generation
